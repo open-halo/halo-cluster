@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nacos:
+    image: ${ALIYUN_DOCKER_REGISTRY}/${ALIYUN_DOCKER_NAME_SPACE}/rnacos:v0.5.22-alpine
+    container_name: nacos
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "10848:10848"
+    volumes:
+      - ./data:/io:rw
+    environment:
+      - RNACOS_INIT_ADMIN_USERNAME=admin
+      - RNACOS_INIT_ADMIN_PASSWORD=admin
+      - RNACOS_HTTP_PORT=8848
+    restart: always
